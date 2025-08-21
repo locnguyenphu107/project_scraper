@@ -1,0 +1,23 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Python venv
+venv/
+project_scraper/
+*.pyc
+__pycache__/
+
+# Env files
+.env
+*.env
+
+# OS / editor junk
+.DS_Store
