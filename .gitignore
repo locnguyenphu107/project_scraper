@@ -20,4 +20,4 @@ __pycache__/
 *.env
 
 # OS / editor junk
-.DS_Store
+.DS_Storepython_postco/
