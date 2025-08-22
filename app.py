@@ -16,7 +16,8 @@ import re
 st.set_page_config(
     page_title="Smartlead Campaign Automation",
     layout="wide",
-    initial_sidebar_state="expanded"
+    initial_sidebar_state="expanded",
+    page_icon="🦁" # Use an emoji as the icon
 )
 st.title("Smartlead Campaign Automation")
 st.markdown("Automate campaign setup on Smartlead with a simple, user-friendly interface.")
