@@ -272,11 +272,45 @@ def campaign_scheduling(campaign_id, payload):
 with st.sidebar:
     st.header("Campaign Setup")
     file_name = st.text_input("Campaign Base Name", "US - Footwear - Set 1")
-    email_type = st.selectbox("Email Type", ["PIC", "GEN", "ALL"])
-    time_zone = st.selectbox("Time Zone", [
+    # email_type = st.selectbox("Email Type", ["PIC", "GEN", "ALL"])
+    # time_zone = st.selectbox("Time Zone", [
+    #     "America/Toronto", "America/Los_Angeles", "Europe/London", "Australia/Melbourne",
+    #     "Asia/Kuala_Lumpur", "Asia/Tokyo"
+    # ])
+    
+    # Create the initial list of options, adding a special "Other" choice
+    email_options = ["PIC", "GEN", "ALL", "Other..."]
+    time_zone_options = [
         "America/Toronto", "America/Los_Angeles", "Europe/London", "Australia/Melbourne",
-        "Asia/Kuala_Lumpur", "Asia/Tokyo"
-    ])
+        "Asia/Kuala_Lumpur", "Asia/Tokyo", "Other..."
+    ]
+
+    # --- Email Type Logic ---
+    email_type_selection = st.selectbox("Email Type", email_options)
+
+    # Check if the user selected "Other..."
+    if email_type_selection == "Other...":
+        # If so, display a text input field for the custom value
+        custom_email_type = st.text_input("Enter a new Email Type")
+        # Use the custom value if the user entered something
+        email_type = custom_email_type if custom_email_type else None
+    else:
+        # Otherwise, use the value from the selectbox
+        email_type = email_type_selection
+
+    # --- Time Zone Logic ---
+    time_zone_selection = st.selectbox("Time Zone", time_zone_options)
+
+    # Check if the user selected "Other..."
+    if time_zone_selection == "Other...":
+        # If so, display a text input field for the custom value
+        custom_time_zone = st.text_input("Enter a new Time Zone")
+        # Use the custom value if the user entered something
+        time_zone = custom_time_zone if custom_time_zone else None
+    else:
+        # Otherwise, use the value from the selectbox
+        time_zone = time_zone_selection
+
     start_date = st.date_input("Schedule Start Date")
     start_time = f"{start_date}"
 
