@@ -277,7 +277,7 @@ with st.sidebar:
     #     "America/Toronto", "America/Los_Angeles", "Europe/London", "Australia/Melbourne",
     #     "Asia/Kuala_Lumpur", "Asia/Tokyo"
     # ])
-    
+
     # Create the initial list of options, adding a special "Other" choice
     email_options = ["PIC", "GEN", "ALL", "Other..."]
     time_zone_options = [
@@ -333,6 +333,9 @@ if st.button("🚀 Launch Campaign"):
     if not all([file_name, email_type, time_zone, start_date, uploaded_leads, uploaded_sequences, uploaded_accounts]):
         st.error("Please fill in all the required fields and upload all three files.")
         st.stop()
+    
+    # Add this line to clear the cache for the specific function
+    load_and_format.clear()
     
     # Check if SP names are unique
     if len(set(sp_names)) != len(sp_names):
