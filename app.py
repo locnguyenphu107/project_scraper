@@ -326,6 +326,33 @@ with st.sidebar:
     uploaded_accounts = st.file_uploader("Upload Accounts Excel File", type=["xlsx", "xls"], help="The file with a list of email accounts to use.")
 
 # =================================================================================
+# Data Preview Section
+# =================================================================================
+if uploaded_leads:
+    st.subheader("Leads File Preview")
+    try:
+        leads_df_preview = pd.read_excel(uploaded_leads)
+        st.dataframe(leads_df_preview.head(5))
+    except Exception as e:
+        st.error(f"Error reading leads file for preview: {e}")
+
+if uploaded_sequences:
+    st.subheader("Sequences File Preview")
+    try:
+        sequences_df_preview = pd.read_excel(uploaded_sequences)
+        st.dataframe(sequences_df_preview.head(5))
+    except Exception as e:
+        st.error(f"Error reading sequences file for preview: {e}")
+
+if uploaded_accounts:
+    st.subheader("Accounts File Preview")
+    try:
+        accounts_df_preview = pd.read_excel(uploaded_accounts)
+        st.dataframe(accounts_df_preview.head(5))
+    except Exception as e:
+        st.error(f"Error reading accounts file for preview: {e}")
+
+# =================================================================================
 # Main Execution Logic
 # =================================================================================
 if st.button("🚀 Launch Campaign"):
@@ -336,7 +363,7 @@ if st.button("🚀 Launch Campaign"):
     
     # Add this line to clear the cache for the specific function
     load_and_format.clear()
-    
+
     # Check if SP names are unique
     if len(set(sp_names)) != len(sp_names):
         st.error("All SP names must be unique.")
