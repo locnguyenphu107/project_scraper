@@ -39,7 +39,6 @@ def safe_value(val):
         return ""
     return str(val).strip()
 
-@st.cache_data
 def load_and_format(_df_list, sp_list, email_type, campaign_base_name):
     campaign_with_leads = {}
     for df, sp_name in zip(_df_list, sp_list):
@@ -360,9 +359,6 @@ if st.button("🚀 Launch Campaign"):
     if not all([file_name, email_type, time_zone, start_date, uploaded_leads, uploaded_sequences, uploaded_accounts]):
         st.error("Please fill in all the required fields and upload all three files.")
         st.stop()
-    
-    # Add this line to clear the cache for the specific function
-    load_and_format.clear()
 
     # Check if SP names are unique
     if len(set(sp_names)) != len(sp_names):
