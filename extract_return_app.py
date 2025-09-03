@@ -81,7 +81,7 @@ def create_excel_download(df_with_returns, df_multiple_returns):
     return output
 
 # --- Streamlit App UI ---
-st.set_page_config(page_title="Return App Identifier", layout="wide")
+st.set_page_config(page_title="Return App Identifier", layout="wide", page_icon="🛍️")
 st.title("🛍️ Return App Identifier")
 st.markdown("Upload your data and we'll identify all the return applications for you!")
 
