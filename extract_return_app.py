@@ -74,7 +74,7 @@ def process_return_apps(df_main: pd.DataFrame, df_app: pd.DataFrame):
 def create_excel_download(df_with_returns, df_multiple_returns):
     """Creates a downloadable Excel file in memory."""
     output = io.BytesIO()
-    with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
+    with pd.ExcelWriter(output, engine='openpyxl') as writer:
         df_with_returns.to_excel(writer, sheet_name='Brands With Return App', index=False)
         df_multiple_returns.to_excel(writer, sheet_name='Brands With >1 Return App', index=False)
     output.seek(0)
